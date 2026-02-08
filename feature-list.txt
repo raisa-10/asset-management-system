@@ -1,0 +1,78 @@
+ASSET TRACKER – FEATURE LIST
+
+1. Understanding of Client Requirements
+
+The client wants a software system for managing company assets.
+The primary goal is to track which asset is currently assigned to which employee.
+The system should help the company maintain visibility over assets such as laptops,
+mobiles, ID cards, accessories, or any other company-owned items.
+
+The software should reduce confusion, prevent asset loss, and improve accountability
+by maintaining a clear record of asset ownership and assignment history.
+
+
+2. Creative Freedoms Taken
+
+- Product Name: "Asset Tracker"
+- Scope: Focused on basic asset tracking and employee assignment for the first version.
+- Platform Assumption: Web-based application accessible via browser.
+- User Roles: Assumed presence of an admin user to manage assets and employees.
+- UI Simplicity: Simple and minimal interface over complex visual design.
+- Versioning: Treated this as Version 1 (MVP) with essential features only.
+
+
+3. Assumptions Made
+
+- Each asset has a unique identifier (Asset ID).
+- Each employee has a unique employee ID.
+- Only authorized users (admins) can assign or unassign assets.
+- One asset can be assigned to only one employee at a time.
+- The client is not requesting hardware integration (e.g., RFID) at this stage.
+- Internet access is available since the system is web-based.
+- Data volume is manageable for a basic database setup.
+
+
+4. Feature List
+
+1. Asset Management
+   - Add, edit, and delete company assets.
+   - Store asset details such as asset name, type, serial number, and status.
+
+2. Employee Management
+   - Add, edit, and delete employee records.
+   - Store employee details like name, employee ID, department, and contact info.
+
+3. Asset Assignment
+   - Assign an asset to an employee.
+   - Prevent assigning the same asset to multiple employees at the same time.
+
+4. Asset Unassignment
+   - Unassign assets when returned, resigned, or replaced.
+   - Update asset status automatically when unassigned.
+
+5. Asset Status Tracking
+   - Track whether an asset is available, assigned, or under maintenance.
+
+6. Assignment History
+   - Maintain a history of which employee had which asset and for how long.
+
+7. Search and Filter
+   - Search assets by asset ID, name, or employee.
+   - Filter assets by status or type.
+
+8. Dashboard (Basic)
+   - View total assets, assigned assets, and available assets at a glance.
+
+
+5. Questions for Next Client Meeting
+
+1. What types of assets should be tracked initially?
+2. Should employees be able to view their assigned assets?
+3. Are multiple user roles required (Admin, Manager, Employee)?
+4. Is asset assignment approval required?
+5. Should the system support asset return confirmation?
+6. Do you need reports (PDF/Excel) for audits?
+7. Is integration with existing HR systems required?
+8. Should asset condition or damage notes be tracked?
+9. What level of data security or access control is expected?
+10. Is this intended for a single office or multiple branches?
