@@ -1,0 +1,179 @@
+USER MANAGEMENT
+
+1. Feature: Create a new user
+
+API Endpoint: POST /api/users
+
+Database Action:
+INSERT into users (name, email, role, password_hash, created_at)
+
+2. Feature: View all users
+
+API Endpoint: GET /api/users
+
+Database Action:
+SELECT * FROM users
+
+3. Feature: View a single user
+
+API Endpoint: GET /api/users/{user_id}
+
+Database Action:
+SELECT * FROM users WHERE id = user_id
+
+4. Feature: Update user details
+
+API Endpoint: PUT /api/users/{user_id}
+
+Database Action:
+UPDATE users SET name, email, role WHERE id = user_id
+
+5. Feature: Delete a user
+
+API Endpoint: DELETE /api/users/{user_id}
+
+Database Action:
+DELETE FROM users WHERE id = user_id
+
+====================================
+ASSET MANAGEMENT
+
+6. Feature: Add a new asset
+
+API Endpoint: POST /api/assets
+
+Database Action:
+INSERT into assets (name, serial_number, category, purchase_date, status='Available', created_at)
+
+7. Feature: View all assets
+
+API Endpoint: GET /api/assets
+
+Database Action:
+SELECT * FROM assets
+
+8. Feature: View a single asset
+
+API Endpoint: GET /api/assets/{asset_id}
+
+Database Action:
+SELECT * FROM assets WHERE id = asset_id
+
+9. Feature: Update asset details
+
+API Endpoint: PUT /api/assets/{asset_id}
+
+Database Action:
+UPDATE assets SET name, serial_number, category WHERE id = asset_id
+
+10. Feature: Delete an asset
+
+API Endpoint: DELETE /api/assets/{asset_id}
+
+Database Action:
+DELETE FROM assets WHERE id = asset_id
+
+====================================
+ASSET ASSIGNMENT
+
+11. Feature: Assign an asset to a user
+
+API Endpoint: POST /api/assignments
+
+Database Action:
+INSERT into assignments (user_id, asset_id, assigned_date)
+AND UPDATE assets SET status='Assigned' WHERE id = asset_id
+
+12. Feature: View all assignments
+
+API Endpoint: GET /api/assignments
+
+Database Action:
+SELECT * FROM assignments
+
+13. Feature: View assignment history of a specific user
+
+API Endpoint: GET /api/users/{user_id}/assignments
+
+Database Action:
+SELECT * FROM assignments WHERE user_id = user_id
+
+14. Feature: Return an assigned asset
+
+API Endpoint: PUT /api/assignments/{assignment_id}/return
+
+Database Action:
+UPDATE assignments SET return_date = CURRENT_DATE
+AND UPDATE assets SET status='Available' WHERE id = asset_id
+
+====================================
+ASSET STATUS CONTROL
+
+15. Feature: Mark asset as broken
+
+API Endpoint: PUT /api/assets/{asset_id}/mark-broken
+
+Database Action:
+UPDATE assets SET status='Broken' WHERE id = asset_id
+
+16. Feature: Mark asset as repaired
+
+API Endpoint: PUT /api/assets/{asset_id}/mark-repaired
+
+Database Action:
+UPDATE assets SET status='Available' WHERE id = asset_id
+
+17. Feature: Mark asset as disposed
+
+API Endpoint: PUT /api/assets/{asset_id}/dispose
+
+Database Action:
+UPDATE assets SET status='Disposed' WHERE id = asset_id
+
+====================================
+SEARCH & FILTER
+
+18. Feature: Search assets by name
+
+API Endpoint: GET /api/assets?search={keyword}
+
+Database Action:
+SELECT * FROM assets WHERE name LIKE '%keyword%'
+
+19. Feature: Filter assets by status
+
+API Endpoint: GET /api/assets?status={status}
+
+Database Action:
+SELECT * FROM assets WHERE status = status
+
+20. Feature: Filter assets by category
+
+API Endpoint: GET /api/assets?category={category}
+
+Database Action:
+SELECT * FROM assets WHERE category = category
+
+====================================
+AUTHENTICATION
+
+21. Feature: Register a new system account
+
+API Endpoint: POST /api/auth/register
+
+Database Action:
+INSERT into users with hashed password
+
+22. Feature: Login to the system
+
+API Endpoint: POST /api/auth/login
+
+Database Action:
+SELECT user WHERE email matches AND verify password hash
+
+23. Feature: Logout from the system
+
+API Endpoint: POST /api/auth/logout
+
+Database Action:
+Invalidate authentication token/session
